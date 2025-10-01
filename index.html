@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frontend Mentor Projects</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      color: #222;
+      margin: 10px 0;
+    }
+
+    p {
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h2 {
+      margin: 0 0 15px;
+      font-size: 1.3rem;
+      color: #111;
+    }
+
+    .card a {
+      display: inline-block;
+      text-decoration: none;
+      background: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+
+    .card a:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>My Frontend Mentor Projects</h1>
+    <p>Click any card to view the live project 🚀</p>
+  </header>
+
+  <div class="projects">
+    <div class="card">
+      <h2>Project 1</h2>
+      <a href="project1/index.html" target="_blank">View Project</a>
+    </div>
+    <div class="card">
+      <h2>Project 2</h2>
+      <a href="project2/index.html" target="_blank">View Project</a>
+    </div>
+    <div class="card">
+      <h2>Project 3</h2>
+      <a href="project3/index.html" target="_blank">View Project</a>
+    </div>
+  </div>
+</body>
+
+</html>
