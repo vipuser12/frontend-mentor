@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --Gradient: hsl(6, 100%, 80%) to hsl(335, 100%, 65%);
+  --Blue-200: hsl(243, 100%, 93%);
+  --Grayish-Blue: hsl(229, 7%, 55%);
+  --Blue-850: hsl(228, 56%, 26%);
+  --Blue-950: hsl(229, 57%, 11%);
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Public Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+}
+body {
+  background-image: url(images/bg-mobile.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  font-family: 'Raleway', sans-serif;
+}
+.container .top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 200px;
+  padding: 1rem;
+  background-color: var(--Blue-850);
+  border-radius: 15px 90px 0 0;
+}
+.container .top img {
+  width: 50%;
+}
+.container .top .icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 80%;
+  padding: 1rem;
+}
+.container .top .icons img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  padding: 1rem;
+  background-color: var(--Blue-950);
+  border-radius: 10%;
+}
+.container .middle {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  height: 100px;
+  padding: 1rem;
+  background-color: var(--Blue-850);
+  color: var(--Blue-200);
+  border-radius: 15px;
+  text-align: center;
+  gap: 8px;
+}
+.container .middle .center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.container .middle p:first-child .used {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.container .middle .progress-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+}
+.container .middle .progress-bar .bar {
+  width: 100%;
+  height: 10px;
+  background-color: var(--Blue-950);
+  border-radius: 8px;
+  padding: 7px;
+}
+.container .middle .progress-bar .bar .inner {
+  background: linear-gradient(to right, hsl(6, 100%, 80%), hsl(335, 100%, 65%));
+  border-radius: 8px;
+  width: 70%;
+  height: 10px;
+  position: relative;
+  bottom: 5px;
+  left: -6px;
+}
+.container .middle .progress-bar .circle {
+  background-color: white;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: relative;
+  bottom: 12px;
+  left: 35px;
+}
+.container .middle .progress-bar .min-max {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.container .middle .storage {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  height: 50px;
+  padding: 1rem;
+  background-color: white;
+  color: black;
+  border-radius: 8px;
+  text-align: center;
+  position: relative;
+  bottom: 5px;
+  left: 0;
+}
+.container .middle .storage p {
+  color: var(--Grayish-Blue);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.container .middle .storage span {
+  color: var(--Blue-850);
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+@media (min-width: 1024px) {
+  body {
+    width: 100%;
+    background-image: url(images/bg-desktop.png);
+    background-color: var(--Blue-950);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    margin-bottom: 100px;
+  }
+  .container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    height: 100vh;
+    font-family: 'Raleway', sans-serif;
+    gap: 20px;
+  }
+  .container .top {
+    width: 30%;
+    border-radius: 10px 100px 10px 10px;
+    height: 170px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 25px;
+  }
+  .container .top .img {
+    width: 50%;
+  }
+  .container .top .icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    gap: 25px;
+  }
+  .container .middle {
+    width: 50%;
+    height: 150px;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .container .middle .center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 29px;
+    gap: 10px;
+  }
+  .middle p:first-child {
+    text-align: left !important;
+    width: 100%;
+  }
+  .container .middle .progress-bar {
+    width: 95%;
+  }
+  .container .middle .progress-bar .circle {
+    left: 95px;
+  }
+  .container .middle .storage {
+    width: 200px;
+    border-radius: 5px;
+    position: relative;
+    bottom: 149px;
+    width: fit-content;
+    left: 187px;
+  }
+  .container .middle .storage p .indicator {
+    position: relative;
+    top: 30px;
+    font-size: 12px;
+    width: 20px;
+    height: 20px;
+    left: 14px;
+    border-left: 20px solid transparent;
+    border-top: 20px solid white;
+  }
+}
