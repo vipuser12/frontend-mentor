@@ -49,3 +49,44 @@ body{
   align-items: center;
   margin-top: 20px;
 }
+
+.card .bottom .profile-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.card .bottom .profile-info span{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+} 
+.card .bottom .profile-info span p{
+  color: var(--Gray-500);
+  vertical-align: middle;
+}
+.card .bottom .profile-info .london{
+  color: var(--Gray-500);
+  margin-bottom: 30px;
+}
+.card .bottom .stats{
+  color: var(--Navy-950);
+  font-weight: 700;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid var(--Gray-100);
+  padding: 20px 0;
+}
+.card .bottom .stats .stat p:last-child{
+  color: var(--Gray-500);
+  font-weight: 400;
+  margin-top: 5px;
+  font-size: 14px;
+}
