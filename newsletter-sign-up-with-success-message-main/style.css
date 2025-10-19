@@ -1,0 +1,231 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+:root {
+  --Red: hsl(4, 100%, 67%);
+  --Blue-800: hsl(234, 29%, 20%);
+  --Blue-700: hsl(235, 18%, 26%);
+  --Grey: hsl(0, 0%, 58%);
+  --White: hsl(0, 0%, 100%);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  font-size: 16px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0;
+}
+.container .top {
+  width: 100%;
+}
+.top img {
+  width: 100%;
+}
+
+.container .bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  margin: 0;
+  width: 100%;
+}
+.bottom h1 {
+  color: var(--Blue-800);
+}
+.bottom p {
+  color: var(--Blue-800);
+  padding: 8px 0;
+}
+.bottom ul {
+  list-style: none;
+}
+.bottom ul li {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+  color: var(--Blue-800);
+  padding: 8px 0;
+}
+.bottom button {
+  width: 100%;
+  padding: 15px 0;
+  background-color: var(--Blue-800);
+  color: var(--White);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  margin: 15px 0;
+}
+.bottom button:hover {
+  background: linear-gradient(to right, rgba(255, 89, 108, 1), hsl(4, 100%, 67%));
+  box-shadow: 5px 5px 15px var(--Red);
+}
+#subscribe-form {
+  width: 100%;
+}
+.bottom .email-input {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+}
+
+.bottom .email-input input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid var(--Grey);
+  border-radius: 5px;
+  margin: 5px 0;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.bottom .email-input input::placeholder {
+  color: var(--Grey);
+}
+
+/* Hide the error text by default */
+.email-input .error {
+  display: none;
+  color: var(--Red);
+  font-size: 0.9rem;
+  position: relative;
+  bottom: 75px;
+  left: 207px;
+}
+
+/* When the input is invalid (and user has typed something), highlight it */
+.email-input input:invalid:not(:placeholder-shown) {
+  border-color: var(--Red);
+  background-color: rgba(255, 0, 0, 0.05);
+}
+
+/* Show the error message when invalid */
+.email-input input:invalid:not(:placeholder-shown) + .error {
+  display: block;
+}
+
+.success {
+  display: none;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 20px;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  padding-top: 100px;
+}
+.success h1 {
+  color: var(--Blue-800);
+  margin: 20px 0;
+}
+.success p {
+  color: var(--Blue-800);
+  padding: 8px 0;
+}
+.success button {
+  width: 100%;
+  padding: 15px 0;
+  background-color: var(--Blue-800);
+  color: var(--White);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+}
+.success button:hover {
+  background: linear-gradient(to right, rgba(255, 89, 108, 1), hsl(4, 100%, 67%));
+  box-shadow: 5px 5px 15px var(--Red);
+}
+.hidden {
+  display: none !important;
+}
+
+@media screen and (min-width: 1024px) {
+  body {
+    background-color: hsl(235, 18%, 26%);
+  }
+  .container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    width: 60%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .sign-up {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    height: 100%;
+  }
+  .container .top {
+    width: 50%;
+    height: 100%;
+    padding: 15px;
+  }
+  .container .top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  .container .bottom {
+    width: 50%;
+    padding: 40px;
+  }
+  .success {
+    display: none;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    width: 43%;
+    height: 66%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+  }
+  .no-bg {
+    background-color: transparent !important;
+  }
+}

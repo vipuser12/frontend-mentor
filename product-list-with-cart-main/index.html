@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Frontend Mentor | Product list with cart</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="products-wrap">
+      <div class="header">Desserts</div>
+      <div class="products">
+      </div>
+    </div>
+    <div class="cart">
+      <h2 class="your-cart">Your Cart()</h2>
+      <div class="cart-wraper">
+        <!-- <ul>
+          <li>
+            <div class="left">
+              <div class="top">
+                <h4 class="desset-name">Classic Tiramisu</h4>
+              </div>
+              <div class="bottom">
+                <span class="quantity">1x</span>
+                <span class="product-price">@ $5.50</span>
+                <span class="total-price">$5.50</span>
+              </div>
+            </div>
+            <div class="right">
+              <img src="./assets/images/icon-remove-item.svg" alt="">
+            </div>
+          </li>
+        </ul>
+        <div class="total-info">
+          <p class="order-total">Order Total</p>
+          <h2 class="total">$45.50</h2>
+        </div>
+        <div class="delivery-info"><img src="./assets/images/icon-carbon-neutral.svg" alt="carbon-neutral">
+          <p>This is a <span>carbon-neutral</span> delivery</p>
+        </div>
+        <button class="confirm-order">Confirm Order</button> -->
+      </div>
+    </div>
+    <div class="modal-overlay"></div>
+    <div class="modal-confirm">
+      <img src="./assets/images/icon-order-confirmed.svg" alt="confirmation icon" class="confrim-icon">
+      <h1>Order confirmed</h1>
+      <p>We hope you enjoy your food!</p>
+      <ul>
+        <li>
+          <div class="left">
+            <img src="./assets/images/image-creme-brulee-mobile.jpg" alt="">
+            <div class="product-info">
+              <h5 class="product-name-modal">Classic Tiramisu</h5>
+              <div class="bottom">
+                <span class="quantity">1x</span>
+                <span class="product-price">@ $7.00</span>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="total-price-modal">$7.00</div>
+          </div>
+        </li>
+      </ul>
+      <div class="order-total2">
+        <p class="order-total-text">Order Total</p>
+        <h2 class="total-order-modal">$7.00</h2>
+      </div>
+      <button class="confirm-btn">Start New Order</button>
+    </div>
+  </div>
+  <script>
+    // ==========================================
+    // 🧁 Product Data
+    // ==========================================
+    const Products = [
+      {
+        image: {
+          thumbnail: "./assets/images/image-waffle-thumbnail.jpg",
+          mobile: "./assets/images/image-waffle-mobile.jpg",
+          tablet: "./assets/images/image-waffle-tablet.jpg",
+          desktop: "./assets/images/image-waffle-desktop.jpg"
+        },
+        name: "Waffle with Berries",
+        category: "Waffle",
+        price: 6.50
+      },
+      {
+        image: {
+          thumbnail: "./assets/images/image-creme-brulee-thumbnail.jpg",
+          mobile: "./assets/images/image-creme-brulee-mobile.jpg",
+          tablet: "./assets/images/image-creme-brulee-tablet.jpg",
+          desktop: "./assets/images/image-creme-brulee-desktop.jpg"
+        },
+        name: "Vanilla Bean Crème Brûlée",
+        category: "Crème Brûlée",
+        price: 7.00
+      },
+      {
+        image: {
+          thumbnail: "./assets/images/image-macaron-thumbnail.jpg",
+          mobile: "./assets/images/image-macaron-mobile.jpg",
+          tablet: "./assets/images/image-macaron-tablet.jpg",
+          desktop: "./assets/images/image-macaron-desktop.jpg"
+        },
+        name: "Macaron Mix of Five",
+        category: "Macaron",
+        price: 8.00
+      },
+      {
+        image: {
+          thumbnail: "./assets/images/image-tiramisu-thumbnail.jpg",
+          mobile: "./assets/images/image-tiramisu-mobile.jpg",
+          tablet: "./assets/images/image-tiramisu-tablet.jpg",
+          desktop: "./assets/images/image-tiramisu-desktop.jpg"
+        },
+        name: "Classic Tiramisu",
+        category: "Tiramisu",
+        price: 5.50
+      },
+      {
+        image: {
+          thumbnail: "./assets/images/image-baklava-thumbnail.jpg",
+          mobile: "./assets/images/image-baklava-mobile.jpg",
+          tablet: "./assets/images/image-baklava-tablet.jpg",
+          desktop: "./assets/images/image-baklava-desktop.jpg"
+        },
+        name: "Pistachio Baklava",
+        category: "Baklava",
+        price: 4.00
+      },
+      {
+        image: {
+          thumbnail: "./assets/images/image-meringue-thumbnail.jpg",
+          mobile: "./assets/images/image-meringue-mobile.jpg",
+          tablet: "./assets/images/image-meringue-tablet.jpg",
+          desktop: "./assets/images/image-meringue-desktop.jpg"
+        },
+        name: "Lemon Meringue Pie",
+        category: "Pie",
+        price: 5.00
+      },
+      {
+        image: {
+          thumbnail: "./assets/images/image-cake-thumbnail.jpg",
+          mobile: "./assets/images/image-cake-mobile.jpg",
+          tablet: "./assets/images/image-cake-tablet.jpg",
+          desktop: "./assets/images/image-cake-desktop.jpg"
+        },
+        name: "Red Velvet Cake",
+        category: "Cake",
+        price: 4.50
+      },
+      {
+        image: {
+          thumbnail: "./assets/images/image-brownie-thumbnail.jpg",
+          mobile: "./assets/images/image-brownie-mobile.jpg",
+          tablet: "./assets/images/image-brownie-tablet.jpg",
+          desktop: "./assets/images/image-brownie-desktop.jpg"
+        },
+        name: "Salted Caramel Brownie",
+        category: "Brownie",
+        price: 4.50
+      },
+      {
+        image: {
+          thumbnail: "./assets/images/image-panna-cotta-thumbnail.jpg",
+          mobile: "./assets/images/image-panna-cotta-mobile.jpg",
+          tablet: "./assets/images/image-panna-cotta-tablet.jpg",
+          desktop: "./assets/images/image-panna-cotta-desktop.jpg"
+        },
+        name: "Vanilla Panna Cotta",
+        category: "Panna Cotta",
+        price: 6.50
+      }
+    ];
+
+    // ✅ Add unique IDs to products
+    Products.forEach((p, index) => (p.id = index + 1));
+
+    // ==========================================
+    // 🛒 Cart Logic
+    // ==========================================
+    const cart = [];
+
+    function addToCart(product) {
+      const existing = cart.find(item => item.id === product.id);
+      if (existing) existing.quantity += 1;
+      else cart.push({ ...product, quantity: 1 });
+      renderCart();
+    }
+
+    function removeFromCart(id) {
+      const index = cart.findIndex(item => item.id === id);
+      if (index !== -1) cart.splice(index, 1);
+      renderCart();
+      renderProducts(Products); // keep buttons synced
+    }
+
+    // ==========================================
+    // 🎨 Render Products
+    // ==========================================
+    function renderProducts(products) {
+      const productsContainer = document.querySelector('.products');
+      productsContainer.innerHTML = products
+        .map(
+          product => `
+          <div class="product">
+            <div class="image">
+              <img src="${product.image.mobile}" alt="${product.name}">
+              <button class="add-to-cart" data-id="${product.id}">
+                <img src="./assets/images/icon-add-to-cart.svg" alt="cart icon"> Add to Cart
+              </button>
+            </div>
+            <div class="description">
+              <div class="type">${product.category}</div>
+              <div class="name">${product.name}</div>
+              <div class="price">$${product.price.toFixed(2)}</div>
+            </div>
+          </div>
+        `
+        )
+        .join('');
+
+      // Attach button handlers
+      document.querySelectorAll('.add-to-cart').forEach(btn => {
+        const id = Number(btn.getAttribute('data-id'));
+        const product = Products.find(p => p.id === id);
+
+        function updateButton() {
+          const cartItem = cart.find(item => item.id === id);
+
+          if (!cartItem) {
+            btn.classList.remove('active');
+            btn.innerHTML = `
+            <img src="./assets/images/icon-add-to-cart.svg" alt="cart icon"> Add to Cart
+            `;
+            return;
+          }
+
+          btn.classList.add('active');
+          btn.innerHTML = `
+            <img src="./assets/images/icon-decrement-quantity.svg" alt="decrement" class="decrement-btn">
+            <span class="count">${cartItem.quantity}</span>
+            <img src="./assets/images/icon-increment-quantity.svg" alt="increment" class="increment-btn">
+          `;
+
+
+
+          const decrementBtn = btn.querySelector('.decrement-btn');
+          const incrementBtn = btn.querySelector('.increment-btn');
+
+          decrementBtn.onclick = () => {
+            if (cartItem.quantity === 1) removeFromCart(id);
+            else cartItem.quantity -= 1;
+            renderCart();
+            updateButton();
+          };
+
+          incrementBtn.onclick = () => {
+            cartItem.quantity += 1;
+            renderCart();
+            updateButton();
+          };
+        }
+
+        // Add to cart on main click
+        btn.addEventListener('click', () => {
+          const inCart = cart.find(item => item.id === id);
+          if (!inCart && product) {
+            addToCart(product);
+            renderCart();
+          }
+          const productImg = btn.parentElement.querySelector('img');
+
+          // ✅ Apply border correctly
+          productImg.style.border = '2px solid var(--Red)';
+          productImg.style.borderRadius = '10px'; // optional, makes it look cleaner
+          updateButton();
+        });
+
+        // Initialize button state
+        updateButton();
+      });
+    }
+
+    // ==========================================
+    // 🧾 Render Cart
+    // ==========================================
+    function renderCart() {
+      const cartWrapperDiv = document.querySelector('.cart-wraper');
+      const titleElement = document.querySelector('.your-cart');
+      cartWrapperDiv.innerHTML = '';
+
+      // Empty cart state
+      if (cart.length === 0) {
+        cartWrapperDiv.innerHTML = `
+          <div class="empty-cart">
+            <img src="./assets/images/illustration-empty-cart.svg" alt="Empty cart illustration" class="empty-cart-img">
+            <p>Your added items will appear here</p>
+          </div>
+        `;
+        titleElement.textContent = 'Your Cart(0)';
+        return;
+      }
+
+      // Cart list
+      const ul = document.createElement('ul');
+      cart.forEach(item => {
+        const itemTotal = (item.price * item.quantity).toFixed(2);
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <div class="left">
+            <div class="top"><h4 class="desset-name">${item.name}</h4></div>
+            <div class="bottom">
+              <span class="quantity">${item.quantity}x</span>
+              <span class="product-price">@ $${item.price.toFixed(2)}</span>
+              <span class="total-price">$${itemTotal}</span>
+            </div>
+          </div>
+          <div class="right">
+            <img src="./assets/images/icon-remove-item.svg" alt="remove" class="remove-item" data-id="${item.id}">
+          </div>
+        `;
+        ul.appendChild(li);
+      });
+
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      titleElement.textContent = `Your Cart(${totalItems})`;
+
+      cartWrapperDiv.appendChild(ul);
+      cartWrapperDiv.innerHTML += `
+        <div class="total-info">
+          <p class="order-total">Order Total</p>
+          <h2 class="total">$${total.toFixed(2)}</h2>
+        </div>
+        <div class="delivery-info">
+          <img src="./assets/images/icon-carbon-neutral.svg" alt="carbon-neutral">
+          <p>This is a <span>carbon-neutral</span> delivery</p>
+        </div>
+        <button class="confirm-order">Confirm Order</button>
+      `;
+
+      // Remove item
+      document.querySelectorAll('.remove-item').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const id = Number(e.currentTarget.getAttribute('data-id'));
+          removeFromCart(id);
+        });
+      });
+
+      // Confirm order
+      function handleOrderModal() {
+        const modal = document.querySelector('.modal-confirm');
+        const overlay = document.querySelector('.modal-overlay');
+        const modalList = modal.querySelector('ul');
+        const modalTotal = modal.querySelector('.order-total2 .total');
+        const startNewOrderBtn = modal.querySelector('.confirm-btn');
+        const confirmBtn = document.querySelector('.confirm-order');
+
+        if (!confirmBtn) return;
+
+        confirmBtn.onclick = () => {
+          // Show modal
+          modal.style.display = 'flex';
+          overlay.style.display = 'block';
+
+          // Render items
+          modalList.innerHTML = '';
+          cart.forEach(item => {
+            const itemTotal = (item.price * item.quantity).toFixed(2);
+            modalList.innerHTML += `
+        <li>
+          <div class="left">
+            <img src="${item.image.thumbnail}" alt="${item.name}">
+            <div>
+              <p class="product-name-modal">${item.name}</p>
+              <p><span class="quantity">${item.quantity}x</span> @$${item.price.toFixed(2)}</p>
+            </div>
+          </div>
+          <div class="right">
+            <p class="total-price-modal">$${itemTotal}</p>
+          </div>
+        </li>
+      `;
+          });
+
+          // Total price
+          const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+          modalTotal.textContent = `$${total.toFixed(2)}`;
+        };
+
+        // Close modal
+        function closeModal() {
+          modal.style.display = 'none';
+          overlay.style.display = 'none';
+          cart.length = 0;
+          renderCart();
+          renderProducts(Products);
+        }
+
+        overlay.addEventListener('click', closeModal);
+        startNewOrderBtn.addEventListener('click', closeModal);
+      }
+      handleOrderModal();
+    }
+
+    // ==========================================
+    // 🚀 Initialize
+    // ==========================================
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts(Products);
+      renderCart();
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,118 @@
+@font-face {
+  font-family: 'figtree';
+  font-weight: 400 500;
+  src: url('./assets/fonts/Figtree-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'figtree';
+  font-weight: 600 700;
+  src: url('./assets/fonts/Figtree-Italic-VariableFont_wght.ttf');
+}
+
+:root {
+  --Yellow: hsl(47, 88%, 63%);
+  --White: hsl(0, 0%, 100%);
+  --Gray-500: hsl(0, 0%, 42%);
+  --Gray-950: hsl(0, 0%, 7%);
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: var(--Yellow);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: '', sans-serif;
+}
+.container {
+  background-color: var(--White);
+  border-radius: 15px;
+  box-shadow: 8px 8px 0 black;;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.card {
+  padding: 20px;
+}
+.card .article-img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.card h1 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: var(--Gray-950);
+  margin-bottom: 15px;
+}
+
+.card-title .title {
+  background-color: var(--Yellow);
+  color: var(--Gray-950);
+  font-weight: 500;
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+.card-title .date {
+  color: var(--Gray-950);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.card-content h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: var(--Gray-950);
+}
+.card-content h1:hover {
+  color: var(--Yellow);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.card-content .description {
+  font-size: 1rem;
+  color: var(--Gray-500);
+  line-height: 1.5;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.author {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+}
+.author img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+.author .author-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--Gray-950);
+}
+
+@media screen and (min-width: 1024px){
+  .container{
+    width: 24%;
+  }
+}

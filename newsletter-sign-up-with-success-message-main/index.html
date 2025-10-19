@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Frontend Mentor | Newsletter sign-up form with success message</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Sign-up form start -->
+    <div class="sign-up">
+    <div class="top">
+      <img src="./assets/images/illustration-sign-up-mobile.svg" alt="sign-up">
+    </div>
+    <div class="bottom">
+      <h1>Stay updated!</h1>
+      <p>Join 60,000+ product managers receiving monthly updates on:</p>
+      <ul>
+        <li><img src="./assets/images/icon-list.svg" alt="icon-list">Product discovery and building what matters</li>
+        <li><img src="./assets/images/icon-list.svg" alt="icon-list">Measuring to ensure updates are a success</li>
+        <li><img src="./assets/images/icon-list.svg" alt="icon-list">And much more!</li>
+      </ul>
+      <form id="subscribe-form">
+      <div class="email-input">
+        <label for="email">Email address</label>
+        <input id="email" type="email" placeholder="email@company.com" required>
+        <span class="error">Valid email required</span>
+      </div>
+      <button type="submit">Subscribe to monthly newsletter</button>
+      </form>
+    </div>
+    </div>
+    <!-- Sign-up form end -->
+    <!-- Success message start -->
+    <div class="success" id="success-message">
+      <div class="top-success">
+        <img src="./assets/images/icon-success.svg" alt="success-icon">
+        <h1>Thanks for subscribing!</h1>
+        <p>
+          A confirmation email has been sent to <b id="user-email">email@company.com</b>.
+          Please open it and click the button inside to confirm your subscription.
+        </p>
+      </div>
+      <button id="dismiss-btn" type="button">Dismiss message</button>
+    </div>
+    <!-- Success message end -->
+  </div>
+  <script>
+    const form = document.getElementById('subscribe-form');
+    const success = document.getElementById('success-message');
+    const emailInput = document.getElementById('email');
+    const userEmail = document.getElementById('user-email');
+    const dismissBtn = document.getElementById('dismiss-btn');
+    const signUpSection = document.querySelector('.sign-up'); // 👈 grab the whole sign-up section
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); // stop form from reloading page
+
+      if (emailInput.checkValidity()) {
+        // insert user's email in the success message
+        userEmail.textContent = emailInput.value;
+        
+        document.querySelector('.container').classList.add('no-bg');
+
+        // hide the entire sign-up and show success
+        signUpSection.classList.add('hidden');
+        success.style.display = 'flex';
+      } else {
+        // trigger built-in browser validation
+        emailInput.reportValidity();
+      }
+    });
+
+    dismissBtn.addEventListener('click', () => {
+      // hide success message, show form again, and reset
+      success.style.display = 'none';
+      signUpSection.classList.remove('hidden');
+      document.querySelector('.container').classList.remove('no-bg');
+      form.reset();
+    });
+  </script>
+
+
+</body>
+
+</html>
