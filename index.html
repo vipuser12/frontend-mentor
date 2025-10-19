@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frontend Mentor Projects</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend Mentor Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -15,100 +15,177 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #1e3c72, #2a5298);
-      color: #fff;
+      background: radial-gradient(circle at top, #111 0%, #000 100%);
+      color: #f5f5f5;
       min-height: 100vh;
-      padding: 40px 20px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      overflow-x: hidden;
+      padding: 60px 20px;
     }
 
     header {
       text-align: center;
-      margin-bottom: 50px;
-      animation: fadeDown 1s ease-in-out;
+      margin-bottom: 70px;
+      animation: fadeDown 1.2s ease-in-out forwards;
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 5vw, 2.8rem);
       font-weight: 700;
+      background: linear-gradient(90deg, #c0c0c0, #ffffff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -moz-background-clip: text;
+      -moz-text-fill-color: transparent;
+      letter-spacing: 2px;
     }
 
     p {
-      margin-top: 10px;
       font-size: 1.1rem;
-      color: #ddd;
+      color: #aaa;
+      margin-top: 10px;
+      letter-spacing: 0.5px;
+      max-width: 600px;
     }
 
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+      gap: 40px;
       width: 100%;
       max-width: 1200px;
+      animation: fadeUp 1.5s ease-in-out forwards;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 16px;
-      padding: 25px;
+      position: relative;
+      padding: 40px 25px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.05);
       text-align: center;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeUp 1s ease-in-out;
+      transition: all 0.5s ease;
+      overflow: hidden;
+      will-change: transform, box-shadow;
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at center, rgba(255, 255, 255, 0.15), transparent 70%);
+      transform: rotate(25deg);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+      /* ✅ ensures links remain clickable */
+    }
+
+    .card:hover::before {
+      opacity: 1;
     }
 
     .card:hover {
       transform: translateY(-10px) scale(1.03);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 60px rgba(255, 255, 255, 0.1);
     }
 
     .card h2 {
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       margin-bottom: 20px;
-      font-weight: 600;
-      color: #fff;
+      color: #e5e5e5;
+      font-weight: 500;
+      letter-spacing: 0.5px;
     }
 
     .card a {
       text-decoration: none;
-      background: linear-gradient(135deg, #ff416c, #ff4b2b);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 10px;
-      font-weight: bold;
+      background: linear-gradient(135deg, #ffffff 0%, #a8a8a8 100%);
+      color: #000;
+      padding: 12px 26px;
+      border-radius: 30px;
+      font-weight: 600;
       display: inline-block;
-      transition: background 0.3s ease, transform 0.2s ease;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
     }
 
     .card a:hover {
-      background: linear-gradient(135deg, #ff4b2b, #ff416c);
-      transform: scale(1.05);
+      background: linear-gradient(135deg, #d6d6d6 0%, #ffffff 100%);
+      transform: scale(1.08);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
     }
 
     @keyframes fadeDown {
-      from {
+      0% {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-30px);
       }
 
-      to {
+      100% {
         opacity: 1;
         transform: translateY(0);
       }
     }
 
     @keyframes fadeUp {
-      from {
+      0% {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
       }
 
-      to {
+      100% {
         opacity: 1;
         transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .projects {
+        gap: 25px;
+      }
+
+      .card {
+        padding: 30px 20px;
+      }
+
+      .card img {
+        height: 180px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 40px 15px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      .card h2 {
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -116,36 +193,44 @@
 
 <body>
   <header>
-    <h1>🚀 My Frontend Mentor Projects</h1>
-    <p>Click any project card below to view it live</p>
+    <h1>My Frontend Mentor Showcase</h1>
+    <p>Precision. Elegance. Code that performs like an engine.</p>
   </header>
 
-  <div class="projects">
-    <div class="card">
-      <h2>Digitalbank landing page</h2>
-      <a href="Digitalbank landing page/index.html" target="_blank">View Project</a>
-    </div>
-    <div class="card">
-      <h2>fylo-data-storage-component-master</h2>
-      <a href="fylo-data-storage-component-master/index.html" target="_blank">View Project</a>
-    </div>
-    <div class="card">
-      <h2>huddle-landing-page</h2>
-      <a href="huddle-landing-page-with-single-introductory-section-master/huddle-landing-page-with-single-introductory-section-master/index.html" target="_blank">View Project</a>
-    </div>
-    <div class="card">
-      <h2>Profile-card-component</h2>
-      <a href="profile-card-component-main/index.html" target="_blank">View Project</a>
-    </div>
-    <div class="card">
-      <h2>single-price-grid-component-master</h2>
-      <a href="single-price-grid-component-master/index.html" target="_blank">View Project</a>
-    </div>
-    <div class="card">
-      <h2>browser-extensions-manager</h2>
-      <a href="browser-extensions-manager-ui-main/index.html" target="_blank">View Project</a>
-    </div>
-  </div>
+  <section class="projects"></section>
+
+  <script>
+    const Projects = [
+      { name: 'Digitalbank Landing Page', image: './Digitalbank landing page/preview.jpg', link: './Digitalbank landing page/index.html' },
+      { name: 'Fylo Data Storage Component', image: './fylo-data-storage-component-master/preview.jpg', link: './fylo-data-storage-component-master/index.html' },
+      { name: 'Huddle Landing Page', image: './huddle-landing-page-with-single-introductory-section-master/huddle-landing-page-with-single-introductory-section-master/preview.jpg', link: './huddle-landing-page-with-single-introductory-section-master/index.html' },
+      { name: 'Profile Card Component', image: './profile-card-component-main/preview.jpg', link: './profile-card-component-main/index.html' },
+      { name: 'Single Price Grid Component', image: './single-price-grid-component-master/preview.jpg', link: './single-price-grid-component-master/index.html' },
+      { name: 'Browser Extensions Manager', image: './browser-extensions-manager-ui-main/preview.jpg', link: './browser-extensions-manager-ui-main/index.html' },
+      { name: 'Recipe Page', image: './recipe-page-main/preview.jpg', link: './recipe-page-main/index.html' },
+      { name: 'Results Summary Component', image: './results-summary-component-main/preview.jpg', link: './results-summary-component-main/index.html' },
+      { name: 'Age Calculator', image: './age-calculator-app-main/preview.jpg', link: './age-calculator-app-main/index.html' },
+      { name: 'Bento Grid', image: './bento-grid-main/preview.jpg', link: './bento-grid-main/index.html' },
+      { name: 'Blog Preview Card', image: './blog-preview-card-main/preview.jpg', link: './blog-preview-card-main/index.html' },
+      { name: 'Newsletter Sign-up', image: './newsletter-sign-up-with-success-message-main/preview.jpg', link: './newsletter-sign-up-with-success-message-main/index.html' },
+      { name: 'Product List with Cart', image: './product-list-with-cart-main/preview.jpg', link: './product-list-with-cart-main/index.html' },
+    ];
+
+    const renderProjects = () => {
+      const container = document.querySelector('.projects');
+      container.innerHTML = Projects.map(
+        project => `
+          <div class="card">
+            <img src="${project.image}" alt="${project.name}">
+            <h2>${project.name}</h2>
+            <a href="${project.link}" target="_blank">View Project</a>
+          </div>
+        `
+      ).join('');
+    };
+
+    renderProjects();
+  </script>
 </body>
 
 </html>
